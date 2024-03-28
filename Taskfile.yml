@@ -1,0 +1,29 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: test
+  dependencies:
+    sources:
+      - Taskfile.yml
+    cmds:
+      - mkdir -p deps
+      - '[[ -d deps/mini.nvim ]] || git clone --depth 1 https://github.com/echasnovski/mini.nvim deps/mini.nvim'
+      - '[[ -d deps/telescope.nvim ]] || git clone --depth 1 https://github.com/nvim-telescope/telescope.nvim deps/telescope.nvim'
+      - '[[ -d deps/plenary.nvim ]] || git clone --depth 1 https://github.com/nvim-lua/plenary.nvim deps/plenary.nvim'
+  test:
+    deps:
+      - task: dependencies
+    cmds:
+      - nvim --version | head -n 1 && echo ''
+      - nvim --headless --noplugin -u ./scripts/minimal_init.lua -c "lua require('mini.test').setup()" -c "lua MiniTest.run({ execute = { reporter = MiniTest.gen_reporter.stdout({ group_depth = 2 }) } })"
+  docs:
+    deps:
+      - task: dependencies
+    cmds:
+      - nvim --headless --noplugin -u ./scripts/minimal_init.lua -c "lua require('mini.doc').generate()" -c "qa!"
+  lint:
+    cmds:
+    - stylua . -g '*.lua' -g '!deps/'
+

@@ -1,0 +1,24 @@
+{
+  "neodev": {
+    "library": {
+      "enabled": true,
+      "plugins": [
+        "neoconf.nvim",
+        "nvim-lspconfig",
+        "telescope.nvim",
+        "nvim-nio",
+        "mini.test"
+      ]
+    }
+  },
+  "neoconf": {
+    "plugins": {
+      "lua_ls": {
+        "enabled": true
+      }
+    }
+  },
+  "lspconfig": {
+    "lua_ls": {"Lua.diagnostics.globals": ["MiniTest", "vim"]}
+    }
+}
