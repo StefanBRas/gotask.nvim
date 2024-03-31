@@ -15,6 +15,11 @@ Feel free to open issues or PRs.
 ## Dependencies
 
 - telescope.nvim
+- a task binary in your PATH
+
+## Usage
+
+`Telescope gotask` will show a list of tasks in your taskfile. Selecting one will run it.
 
 ## ⚙ Configuration
 
@@ -24,4 +29,8 @@ require("gotask").setup({
   task_binary = "task", -- the binary to use
 })
 ```
+
+## Health check
+
+Run `:checkhealth gotask` to see if everything is working. There will be a section called `gotask.nvim`.
 
