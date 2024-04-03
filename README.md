@@ -13,7 +13,7 @@ Feel free to open issues or PRs.
 
 
 ## Dependencies
-
+- nvim >= 0.10 (Currently the prerelease version. Only because I use vim.system - if this is a problem, feel free to suggest an alternative)
 - telescope.nvim
 - a task binary in your PATH
 
