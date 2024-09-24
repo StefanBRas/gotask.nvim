@@ -26,6 +26,7 @@ local M = {}
 --- @return ListAllOutput
 local function get_gotask_list_all_output()
 	local obj = vim.system({ options.task_binary, "--list-all", "--json" }, { text = true }):wait()
+	-- TODO: set a timeout and error message here
 	return vim.fn.json_decode(obj.stdout)
 end
 
