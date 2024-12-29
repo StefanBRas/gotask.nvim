@@ -25,13 +25,17 @@ end
 function M.telescope(opts)
 	pickers
 		.new(opts, {
-			results_title = "Gotask",
+			results_title = "Gotask eyy",
 			prompt_title = "Gotask tasks",
+			prompt_prefix = "(<CR> to run task, <S-CR> to go to taskfile): ",
 			finder = M.finder(),
 			sorter = conf.generic_sorter(opts),
 			previewer = conf.grep_previewer(opts),
 			attach_mappings = function(prompt_bufnr, map)
-				actions.select_default:replace(function()
+				map("i", "<S-CR>", function()
+					actions.select_default(prompt_bufnr)
+				end)
+				map("i", "<CR>", function()
 					actions.close(prompt_bufnr)
 					---@type GoTaskJson
 					local task = action_state.get_selected_entry().value
