@@ -3,7 +3,7 @@
 </p>
 
 Plugin to help with [gotask](https://taskfile.dev).
-For now, it's just a Telescope extension that lets you pick a task to run.
+For now, it's just a Telescope and fzf-lua extension that lets you pick a task to run or go to.
 
 It's very much alpha and it's my first plugin, so don't expect too much.
 
@@ -14,12 +14,17 @@ Feel free to open issues or PRs.
 
 ## Dependencies
 - nvim >= 0.10 (Currently the prerelease version. Only because I use vim.system - if this is a problem, feel free to suggest an alternative)
-- telescope.nvim
 - a task binary in your PATH
+
+### Optional dependencies
+- telescope.nvim
+- fzf-lua
 
 ## Usage
 
-`Telescope gotask` will show a list of tasks in your taskfile. Selecting one will run it.
+### Commands
+- `GotaskTelescope` (or `Telescope gotask`) will show a list of tasks in your taskfile with Telescope. Selecting one will run it. Shift-enter will open the file for edit.
+- `GotaskFzf` will show a list of tasks in your taskfile with fzf-lua. Selecting one will run it. ctrl-g will open the file for edit.
 
 ## ⚙ Configuration
 
